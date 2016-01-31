@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --devtool eval --config webpack.config.js --progress --colors --port 8080"
   },
   "author": "",
   "license": "ISC",
