@@ -1,4 +1,17 @@
-div
-    //这是注释
-    a(ui-sref='index') 首页
-    a(ui-sref='category') 商品分类
+zf-navigation
+
+.container
+    .row
+        .col-md-12
+            .panel.panel-default
+                .panel-heading 登陆
+                .panel-body
+                    form.form-horizontal(name="userform",novalidate="novalidate",role="form")
+                        .form-group
+                            label.col-sm-offset-4.control-label 用户名
+                            .input-group.col-sm-4.col-sm-offset-4
+                                .input-group-addon
+                                    span.glyphicon.glyphicon-user
+                                input#username.form-control(type='text',name='username',ng-model="username",ng-minlength="6",ng-required="true",placeholder="请输入中文名")
+                        .form-group
+                            button.col-sm-offset-5.btn.btn-lg.btn-primary(ng-click="login()") 登陆

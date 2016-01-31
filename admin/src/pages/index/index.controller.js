@@ -1,6 +1,10 @@
-export default function IndexController($scope){
+export default function IndexController($rootScope,$http,$scope,$state){
     $scope.login = () => {
-        alert('login');
+        $http.post('http://localhost:3000/users/login',
+            {username:$scope.username}).then((result)=>{
+               $rootScope.user = result.data;
+               $state.go('category');
+        });
     }
 }
-IndexController.$inject = ['$scope'];
+IndexController.$inject = ['$rootScope','$http','$scope','$state'];

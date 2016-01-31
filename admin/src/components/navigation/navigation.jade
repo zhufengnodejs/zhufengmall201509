@@ -4,6 +4,6 @@
             a.navbar-brand(href='#') 珠峰商城
         ul.nav.navbar-nav
             li
-                a(ui-sref="index") 首页
+                a(ui-sref="index",ng-show="!user",ng-class="{active:state == 'index'}") 首页
             li
-                a(ui-sref="category")  分类管理
+                a(ui-sref="category",ng-show="user",ng-class="{active:state == 'category'}") 商品分类

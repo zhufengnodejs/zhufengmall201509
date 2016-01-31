@@ -21,7 +21,31 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+var session = require('express-session');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://123.57.143.189/zhufengmall');
+var MongoStore = require('connect-mongo/es5')(session);
+app.use(session({
+  secret:'zhufengmall',
+  resave:true,
+  saveUninitialized:true,
+  store:new MongoStore({
+    url:'mongodb://123.57.143.189/zhufengmall'
+  })
+}));
+function responseCross(res){
+  res.setHeader('Access-Control-Allow-Origin','http://localhost:8080');
+  res.setHeader('Access-Control-Allow-Headers','Content-Type');
+  res.setHeader('Access-Control-Allow-Methods','DELETE,POST,GET,PUT');
+  res.setHeader('Access-Control-Allow-Credentials','true');
+}
+app.options(function(req,res,next){
+  responseCross(res);
+})
+app.use(function(req,res,next){
+  responseCross(res);
+  next();
+});
 app.use('/', routes);
 app.use('/users', users);
 
