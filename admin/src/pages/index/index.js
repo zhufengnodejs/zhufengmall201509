@@ -1,5 +1,5 @@
 import indexRoute from './index.routes'
-
-export default angular.module('index.index',[])
+import navigation from 'components/navigation'
+export default angular.module('index.index',[navigation])
 .config(indexRoute)
 .name

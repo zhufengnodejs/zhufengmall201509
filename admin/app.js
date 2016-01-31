@@ -6,6 +6,5 @@ import ngResource from 'angular-resource';
 import routesConfig from 'config/routes.config.js';
 import index from 'pages/index/'
 import category from 'pages/category/'
-
 angular.module('zhufengMall',[uiRouter,ngResource,index,category])
 .config(routesConfig);
